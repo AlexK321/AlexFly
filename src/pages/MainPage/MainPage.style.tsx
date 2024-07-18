@@ -1,5 +1,20 @@
 import styled, { keyframes } from 'styled-components';
 
+const ContainerAnimation = keyframes`
+  from { transform: translateX(-21vw); }
+  to { transform: translateX(0%); }
+`;
+
+const AddAnimation = keyframes`
+  from { transform: translateX(-20vw); }
+  to { transform: translateX(0); }
+`;
+
+const DeleteAnimation = keyframes`
+  from { transform: translateX(0); }
+  to { transform: translateX(600%); }
+`;
+
 export const MainWrapper = styled.div`
   margin: 0;
   display: flex;
@@ -38,37 +53,17 @@ export const ActionContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-const ContainerAnimation = keyframes`
-  from { transform: translateX(-20vw); }
-  to { transform: translateX(0%); }
-`;
-
-const ContainerAnimation1 = keyframes`
-  from { transform: translateX(-21vw); }
-  to { transform: translateX(0%); }
-`;
-
-export const Container = styled.div<{ isAnimationTrigger: boolean }>`
+export const Container = styled.div<{ isAnimationTrigger: boolean; animationDuration: number }>`
   position: relative;
   margin: 10px auto;
   display: flex;
   width: 100%;
-  animation-duration: 0.5s;
-  animation-name: ${props => (props.isAnimationTrigger ? ContainerAnimation : ContainerAnimation1)};
+  animation-duration: ${props => props.animationDuration / 1000}s;
+  animation-name: ${props => (props.isAnimationTrigger ? ContainerAnimation : AddAnimation)};
   overflow: hidden;
 `;
 
-const AddAnimation = keyframes`
-  from { transform: translateX(-20vw); }
-  to { transform: translateX(0); }
-`;
-
-const DeleteAnimation = keyframes`
-  from { transform: translateX(0); }
-  to { transform: translateX(600%); }
-`;
-
-export const Block = styled.div<{ color: string; isDelete?: boolean }>`
+export const Block = styled.div<{ color: string; isDelete?: boolean; animationDuration: number }>`
   margin: 1vw;
   display: flex;
   flex-shrink: 0;
@@ -77,6 +72,6 @@ export const Block = styled.div<{ color: string; isDelete?: boolean }>`
   border: 2px solid ${props => props.theme.colors.border};
   border-radius: 10px;
   background: ${props => props.color};
-  animation-duration: 0.5s;
+  animation-duration: ${props => props.animationDuration / 1000}s;
   animation-name: ${props => (props.isDelete ? DeleteAnimation : AddAnimation)};
 `;

@@ -5,7 +5,6 @@ export interface ITheme {
     bg: string;
     bg2: string;
     font: string;
-    main: string;
     border: string;
   };
 }
@@ -15,7 +14,6 @@ const darkTheme: ITheme = {
     bg: '#2B344B',
     bg2: '#001529',
     font: '#E5E4E8',
-    main: 'orange',
     border: '#c99fb4',
   },
 };
@@ -25,7 +23,6 @@ const lightTheme: ITheme = {
     bg: 'white',
     bg2: 'white',
     font: 'black',
-    main: 'blue',
     border: 'white',
   },
 };
