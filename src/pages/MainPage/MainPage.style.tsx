@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const MainWrapper = styled.div`
   margin: 0;
@@ -38,19 +38,45 @@ export const ActionContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-export const Container = styled.div`
-  margin: 10px;
-  display: flex;
-  width: calc(100% - 20px);
-  flex-wrap: wrap;
+const ContainerAnimation = keyframes`
+  from { transform: translateX(-20vw); }
+  to { transform: translateX(0%); }
 `;
 
-export const Block = styled.div<{ color: string }>`
+const ContainerAnimation1 = keyframes`
+  from { transform: translateX(-21vw); }
+  to { transform: translateX(0%); }
+`;
+
+export const Container = styled.div<{ isAnimationTrigger: boolean }>`
+  position: relative;
+  margin: 10px auto;
+  display: flex;
+  width: 100%;
+  animation-duration: 0.5s;
+  animation-name: ${props => (props.isAnimationTrigger ? ContainerAnimation : ContainerAnimation1)};
+  overflow: hidden;
+`;
+
+const AddAnimation = keyframes`
+  from { transform: translateX(-20vw); }
+  to { transform: translateX(0); }
+`;
+
+const DeleteAnimation = keyframes`
+  from { transform: translateX(0); }
+  to { transform: translateX(600%); }
+`;
+
+export const Block = styled.div<{ color: string; isDelete?: boolean }>`
   margin: 1vw;
   display: flex;
-  width: 15vw;
+  flex-shrink: 0;
+  width: 20vw;
   aspect-ratio: 1 / 1;
   border: 2px solid ${props => props.theme.colors.border};
   border-radius: 10px;
   background: ${props => props.color};
+  animation-duration: 0.5s;
+  animation-name: ${props => (props.isDelete ? DeleteAnimation : AddAnimation)};
 `;

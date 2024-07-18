@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 interface IBox {
   color: string;
+  isDelete?: boolean;
 }
 
 interface IState {
@@ -17,7 +18,10 @@ export const boxesSlice = createSlice({
   initialState,
   reducers: {
     addBox: (state, action) => {
-      state.boxesList = [...state.boxesList, action.payload];
+      state.boxesList = [action.payload, ...state.boxesList];
+    },
+    predeleteBox: state => {
+      state.boxesList[state.boxesList.length - 1].isDelete = true;
     },
     deleteBox: state => {
       state.boxesList.pop();
@@ -41,6 +45,6 @@ export const boxesSlice = createSlice({
   },
 });
 
-export const { addBox, deleteBox } = boxesSlice.actions;
+export const { addBox, deleteBox, predeleteBox } = boxesSlice.actions;
 
 export default boxesSlice.reducer;
