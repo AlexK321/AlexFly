@@ -6,6 +6,7 @@ export interface ITheme {
     bg2: string;
     font: string;
     main: string;
+    border: string;
   };
 }
 
@@ -15,6 +16,7 @@ const darkTheme: ITheme = {
     bg2: '#001529',
     font: '#E5E4E8',
     main: 'orange',
+    border: '#c99fb4',
   },
 };
 
@@ -24,6 +26,7 @@ const lightTheme: ITheme = {
     bg2: 'white',
     font: 'black',
     main: 'blue',
+    border: 'white',
   },
 };
 
@@ -43,6 +46,5 @@ export const GlobalStyles = createGlobalStyle`
     font-family: "Sofia Sans Condensed", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
   }
 `;
