@@ -11,9 +11,9 @@ export const AppRoutes = () => {
 
   const renderLayout = () => {
     return (
-      <div>
+      <>
         <Outlet />
-      </div>
+      </>
     );
   };
 

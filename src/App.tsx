@@ -1,11 +1,16 @@
+import { Provider } from 'react-redux';
+
 import { AppErrorBoundary } from './components/ErrorBoundary';
 import { AppRoutes } from './pages';
+import { store } from './store/store';
 import { GlobalStyles } from './theme';
 
 const App = () => (
   <AppErrorBoundary>
-    <AppRoutes />
-    <GlobalStyles />
+    <Provider store={store}>
+      <AppRoutes />
+      <GlobalStyles />
+    </Provider>
   </AppErrorBoundary>
 );
 

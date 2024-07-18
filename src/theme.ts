@@ -33,10 +33,16 @@ export const appTheme: { dark: ITheme; light: ITheme } = {
 };
 
 export const GlobalStyles = createGlobalStyle`
-  body {
+  #root {
+    height: 100%;
+  }
+
+  html, body {
+    height: 100%;
     margin: 0;
     font-family: "Sofia Sans Condensed", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
   }
 `;
